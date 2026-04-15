@@ -1,0 +1,9 @@
+model:
+  path: "/work/himanshu-r/object_tracking_research/MOT20_Research_v1/yolov8x_1280_PRECISION_BUMP/weights/best.pt"
+  conf: 0.5
+  classes: [0] 
+
+tripwire:
+  line_y: 400
+  buffer_threshold: 5
+  show_trails: true  # Feature we'll add now
