@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Model weights (large binaries — download on demand)
+*.pt
+*.pth
+*.onnx
+
+# Output videos
+output.mp4
+*.mp4.bak
+
+# OS
+.DS_Store
+Thumbs.db

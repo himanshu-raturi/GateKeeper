@@ -1,0 +1,39 @@
+# GateKeeper — default configuration
+# All coordinates are in [x, y] pixel space relative to the source resolution.
+
+model:
+  weights: yolov8n.pt       # YOLOv8 model weights (n / s / m / l / x)
+  confidence: 0.40          # Minimum detection confidence
+  iou: 0.45                 # NMS IoU threshold
+  device: ""                # "" = auto (GPU if available, else CPU)
+  classes: [0]              # COCO class IDs to track  (0 = person)
+
+tracker:
+  type: bytetrack           # bytetrack | botsort
+  track_high_thresh: 0.50
+  track_low_thresh: 0.10
+  new_track_thresh: 0.60
+  track_buffer: 30          # frames to keep a lost track alive
+  match_thresh: 0.80
+
+tripwire:
+  # Two endpoints of the virtual line in [x, y] pixel coordinates.
+  # These defaults assume a 1280x720 source; adjust for your camera.
+  start: [320, 360]
+  end:   [960, 360]
+
+  # Directional buffer — an object must be confirmed on each side for
+  # at least this many consecutive frames before a crossing is counted.
+  buffer_frames_in: 3       # frames required on the "entry" side
+  buffer_frames_out: 3      # frames required on the "exit" side
+
+velocity:
+  # Set to true to overlay per-track speed estimates (pixels/second).
+  enabled: true
+  # Optional homography for real-world speed (m/s).  Leave null to skip.
+  homography_matrix: null
+
+output:
+  show_window: true         # Display live OpenCV window
+  save_video: false         # Write annotated video to disk
+  output_path: "output.mp4"
